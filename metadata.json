@@ -1,0 +1,6 @@
+{
+  "name": "Skilldotpy - NIELIT O Level & CCC Educational Portal",
+  "description": "NIELIT O Level (M1-M4) & CCC exam preparation: Chapter-wise notes, instant MCQ practice, CBT mock tests, video masterclasses, practical coding & Android app.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* ========================================================================= */
+/* NATIVE APP FEEL & NO-ZOOM LOCK (FOR MIT APP INVENTOR & MOBILE WEBVIEWS)   */
+/* ========================================================================= */
+html, body, #root {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overscroll-behavior-y: contain;
+}
+
+button, a, input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer utilities {

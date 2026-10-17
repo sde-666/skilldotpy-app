@@ -2,7 +2,51 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+    
+    <!-- Native Mobile App Zoom Restriction (MIT App Inventor / Android & iOS WebViews) -->
+    <script>
+      (function() {
+        // Prevent multi-touch pinch to zoom
+        document.addEventListener('touchstart', function(e) {
+          if (e.touches && e.touches.length > 1) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+
+        // Prevent double-tap to zoom on mobile
+        var lastTouchTime = 0;
+        document.addEventListener('touchend', function(e) {
+          var currentTime = Date.now();
+          if (currentTime - lastTouchTime <= 300) {
+            var tag = (e.target && e.target.tagName) ? e.target.tagName.toUpperCase() : '';
+            if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
+              e.preventDefault();
+            }
+          }
+          lastTouchTime = currentTime;
+        }, { passive: false });
+
+        // Block WebKit/Safari gesturezoom
+        document.addEventListener('gesturestart', function(e) { e.preventDefault(); }, { passive: false });
+        document.addEventListener('gesturechange', function(e) { e.preventDefault(); }, { passive: false });
+        document.addEventListener('gestureend', function(e) { e.preventDefault(); }, { passive: false });
+
+        // Block Ctrl + mouse wheel zoom & trackpad pinch zoom
+        document.addEventListener('wheel', function(e) {
+          if (e.ctrlKey) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+
+        // Block keyboard zoom shortcuts (Ctrl/Cmd + Plus, Minus, Zero)
+        document.addEventListener('keydown', function(e) {
+          if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
+            e.preventDefault();
+          }
+        });
+      })();
+    </script>
     
     <!-- Primary Page Title & Core SEO Meta -->
     <title data-rh="true">Skilldotpy - NIELIT O Level (M1-M4) &amp; CCC Chapter Wise Notes, MCQs &amp; Paid Courses</title>
